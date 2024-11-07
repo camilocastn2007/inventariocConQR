@@ -19,7 +19,7 @@ class GeneradorQR:
 
     def generar_qr(self, producto):
         url = f"https://miapp.com/productos/{producto.nombre.replace(' ', '_')}"
-        contenido_qr = f"{url}\nDescripción: {producto.descripcion[:30]}"  # hasta 30 caracteres
+        contenido_qr = f"{url}\nDescripción: {producto.descripcion[:30]}"
 
         codigo_qr = pyqrcode.create(contenido_qr)
 
@@ -73,7 +73,7 @@ class Inventario:
         try:
             with open(filename, mode='w', newline='', encoding='utf-8') as file:
                 writer = csv.writer(file)
-                writer.writerow(["Nombre", "Descripción", "Categoría", "Cantidad", "QR"])  # Encabezados
+                writer.writerow(["Nombre", "Descripción", "Categoría", "Cantidad", "QR"]) 
                 for producto in self.productos:
                     writer.writerow([producto.nombre, producto.descripcion, producto.categoria, producto.cantidad,
                                      producto.qr_path])
